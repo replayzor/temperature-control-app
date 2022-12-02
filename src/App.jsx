@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Modal";
 
 function App() {
 	const [temperature, setTemperature] = useState(-5);
 	const [showWarning, setShowWarning] = useState(false);
 
-	// NEED TO SHOW MODAL WHEN
-	// TEMP === 30 OR TEMP === -10
+	useEffect(() => {
+		if (temperature === 30) {
+			setShowWarning(true);
+		} else if (temperature === -10) {
+			setShowWarning(true);
+		}
+	}, [temperature]);
 
 	const increaseTemp = () => {
 		if (temperature === 30) return;
