@@ -2,16 +2,11 @@ import { useState } from "react";
 import Modal from "./Modal";
 
 function App() {
-	const [temperature, setTemperature] = useState(28);
+	const [temperature, setTemperature] = useState(-5);
 	const [showWarning, setShowWarning] = useState(false);
 
-	const handleWarning = () => {
-		if (temperature === 29) {
-			setShowWarning(true);
-		} else if (temperature === -10) {
-			setShowWarning(true);
-		}
-	};
+	// NEED TO SHOW MODAL WHEN
+	// TEMP === 30 OR TEMP === -10
 
 	const increaseTemp = () => {
 		if (temperature === 30) return;
@@ -40,13 +35,13 @@ function App() {
 			</div>
 			<div className="flex  justify-evenly items-center">
 				<button
-					onClick={() => increaseTemp(handleWarning())}
+					onClick={() => increaseTemp()}
 					className="focus:outline hover:bg-gray-700 cursor-pointer border-solid border-2 border-white bg-gray-400 text-white text-3xl h-20 w-20 rounded-full"
 				>
 					+
 				</button>
 				<button
-					onClick={() => decreaseTemp(handleWarning())}
+					onClick={() => decreaseTemp()}
 					className="focus:outline hover:bg-gray-700 cursor-pointer border-solid border-2 border-white bg-gray-400 text-white text-3xl h-20 w-20 rounded-full"
 				>
 					-
