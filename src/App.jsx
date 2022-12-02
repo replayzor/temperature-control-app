@@ -3,12 +3,17 @@ import { useState } from "react";
 function App() {
 	const [temperature, setTemperature] = useState(10);
 
-	if (temperature === 30) {
-		console.log("TOO HOT");
-	}
-	if (temperature === -10) {
-		console.log("TOO COLD");
-	}
+	const increaseTemp = () => {
+		if (temperature === 30) return;
+		const newTemperature = temperature + 1;
+		setTemperature(newTemperature);
+	};
+
+	const decreaseTemp = () => {
+		if (temperature === -10) return;
+		const newTemperature = temperature - 1;
+		setTemperature(newTemperature);
+	};
 
 	return (
 		<div className="h-96 w-72 bg-cyan-900 rounded-2xl shadow-2xl">
@@ -25,15 +30,13 @@ function App() {
 			</div>
 			<div className="flex  justify-evenly items-center">
 				<button
-					disabled={temperature === 30}
-					onClick={() => setTemperature((prevTemp) => prevTemp + 1)}
+					onClick={() => increaseTemp()}
 					className="focus:outline hover:bg-gray-700 cursor-pointer border-solid border-2 border-white bg-gray-400 text-white text-3xl h-20 w-20 rounded-full"
 				>
 					+
 				</button>
 				<button
-					disabled={temperature === -10}
-					onClick={() => setTemperature((prevTemp) => prevTemp - 1)}
+					onClick={() => decreaseTemp()}
 					className="focus:outline hover:bg-gray-700 cursor-pointer border-solid border-2 border-white bg-gray-400 text-white text-3xl h-20 w-20 rounded-full"
 				>
 					-
